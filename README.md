@@ -10,6 +10,38 @@ The project is still a work in progress. To get a more complete picture of the i
 2. Install dependencies: `pip3 install decorator pyglet`
 3. Run `python3 goal.py`
 
+### The example
+
+```python
+import time, random
+import rapidgui
+
+# Load gui file: window opens
+app = rapidgui.load("example.json")
+
+
+def do_heavy_work():
+    time.sleep(random.choice(range(3)))
+
+
+def my_super_duper_long_function():
+    for i in range(20):
+        
+        # Update widget referenced in gui file: Set % for progress bar
+        app("myprogressbar").set_pct(i/20*100) 
+        do_heavy_work()
+
+    app("myprogressbar").set_pct(100)
+    print("Done doing heavy work.")
+
+
+# Bind an event to a button widget
+@app("mybutton")
+def on_pressed(): # even is: user pressed button
+    app("mybutton").set_enabled(False) # Disable the button
+    my_super_duper_long_function() # Start work
+```
+![example vis](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7344101a-a7b2-4af1-959b-9fde9cb9a76d/delete.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45HCRNNWG2%2F20200207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200207T154814Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBYaCXVzLXdlc3QtMiJHMEUCIHz2DW3uy18xSNYFaBDjygOOIY5p%2FpTzPdh1vmZZYuIdAiEA67HXfAoJzuDuAv2kvJwFe3HH2QC1SnQxJ%2FQv2u7VBawqvQMIv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwyNzQ1NjcxNDkzNzAiDKM1pq7yWO6usN9NsCqRAx4wv%2BPwfZ1OQZYu%2FoMD1bAnL8yJu0jV1gvlZiyhN6qQPszWUOlYY1Kd0%2Fi5pwxgMHBRY5DFJZYrd5vKaktyh1o0WwRPUkG3mqR%2BTT7ygVIB2cF0yBvGJmH%2Be8vxshjG2raXnunYbnw6MHWTUFZKWopMiDSzWjOxhR45GrolmB4%2FPbIxwMhcKp2j0g425Z%2B5xG%2BewQdRf5Nj9gi5%2Fv6X9FAed7fQKJcHdYPLUrtdouYy6L8ls4%2Fq1oH4S%2Baz16UEp%2FuXS%2FRwB9k5WT4p9X2VC4RfIzd6VmYrxToshiyyx%2FJXC0vwReUmcoQ5P%2BgAhs2%2BnvVryM6KnvxlBGwKH7AKB%2B8qoJnkGadgFNbP3F%2FP06j2vbnqwlbrczyd39KzfevtI8U66Z0MN82Sqk3o8rv81RO7aJz%2BeWW0J%2BHAw918%2FBuQQd1bE19FZOJ0wJMoUDYioAaZm3qo21hZjc6InS8r%2Bm%2Fn7cOdfw2zEGdjIK8gq%2FGyFMG93GAeHbXcJx9hAzVMm%2FBpYKnQv%2BZ70qLfLHurglGLMKnY9fEFOusBTGoBMQjrI4%2FQ7wYG4T%2FS4rlMf8eiWxVG8yZC5Bf2eGQD4b8zIqj%2BcsvNAsPe9EEFEv%2Fv2DQmc9KXn6BO5WWNsVswq17DyqX7iFg%2FTWJHVv6mQiLzEibfbwTeqI2%2B5lrLSxADDUC4WQr8Abl7CTjpcGhjjJLl8comA8TYG5GoL0WwFsnqQWYFqCOf9hARl3PFrCLLFC3WOrkTDU8T3Yd2rYnP7HJd8MK5NKZsxBee5UemKJNtJsNKNiyaiRmEPQHlDbaYk7FPwLjgepfqJuQYDefvq9%2B5dvA%2BSq%2BW%2FxUgmP9AXNQDGs1O4UXvSw%3D%3D&X-Amz-Signature=c35cb1e8dc721c1d8be266b1966c89043950545d3b1fe9ae14ed61b21980e928&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22delete.gif%22)
 
 ### Implemented GUI components:
 To start a gui thread and open a window, simply put 
