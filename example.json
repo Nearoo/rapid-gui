@@ -1,0 +1,42 @@
+{
+    "app-properties": {
+        "width": 1000,
+        "height": 500,
+        "background_color": [255, 255, 255, 255]
+    },
+
+
+    "components" : [
+        {
+            "meta": {
+                "type": "button",
+                "identifier": "mybutton"
+            },
+            "properties": {
+                "x": 100,
+                "y": 100,
+                "width": 200,
+                "height": 50,
+                "label_text": "Hello",
+                "background_color": [164, 219, 211, 255],
+                "line_color": null,
+                "enabled": true
+            }
+        },
+        {
+            "meta": {
+                "type": "progressbar",
+                "identifier": "myprogressbar"
+            },
+            "properties": {
+                "x": 500,
+                "y": 100,
+                "width": 400,
+                "height": 50,
+                "background_color": [230, 230, 230, 255],
+                "pct": 0,
+                "bar_color": [164, 219, 211, 255]
+            }
+        }
+    ]
+}
